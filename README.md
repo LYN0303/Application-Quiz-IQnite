@@ -1,3 +1,3 @@
 
 # Application-Quiz-IQnite
-#Spring boot et React
+#Spring boot & React
