@@ -1,3 +1,90 @@
+/*
+ * -------------------------------------------------------------------------------
+ * Spécifications des tests pour la classe QuestionControllerTest
+ * -------------------------------------------------------------------------------
+ * Cette classe contient des tests unitaires pour le contrôleur `QuestionController`.
+ * Les tests utilisent JUnit 5, Mockito et Spring Web MVC Test pour simuler les
+ * appels HTTP et vérifier le comportement des actions du contrôleur qui gèrent les
+ * questions du quiz.
+ *
+ * Les tests couvrent les scénarios suivants :
+ *
+ * 1. **`shouldCreateQuestion()`** - Teste la création d'une nouvelle question via l'API.
+ *    - Vérifie que l'API renvoie un statut `201 Created` et que le titre de la question 
+ *      correspond à celui fourni.
+ *
+ * 2. **`shouldReturnAllQuestions()`** - Teste la récupération de toutes les questions via l'API.
+ *    - Vérifie que l'API renvoie un statut `200 OK`, que le sujet de la première question 
+ *      est `"Java"` et que la taille de la liste des questions est correcte.
+ *
+ * 3. **`shouldReturnQuestionById()`** - Teste la récupération d'une question par son ID via l'API.
+ *    - Vérifie que l'API renvoie un statut `200 OK` et que le sujet de la question est `"Java"`.
+ *
+ * 4. **`shouldUpdateQuestion()`** - Teste la mise à jour d'une question via l'API.
+ *    - Vérifie que l'API renvoie un statut `200 OK` et que l'ID de la question dans la réponse 
+ *      est bien `1`.
+ *
+ * 5. **`shouldDeleteQuestion()`** - Teste la suppression d'une question via l'API.
+ *    - Vérifie que l'API renvoie un statut `204 No Content`, indiquant que la suppression a 
+ *      été effectuée avec succès sans retour de contenu.
+ *
+ * 6. **`shouldReturnAllSubjects()`** - Teste la récupération de tous les sujets via l'API.
+ *    - Vérifie que l'API renvoie un statut `200 OK` et que le premier sujet dans la liste est 
+ *      `"Java"`.
+ *
+ * 7. **`shouldReturnShuffledQuestionsForUser()`** - Teste la récupération de questions 
+ *    mélangées pour un utilisateur via l'API.
+ *    - Vérifie que l'API renvoie un statut `200 OK` et que le nombre de questions retournées 
+ *      est inférieur ou égal au nombre spécifié.
+ *
+ * -------------------------------------------------------------------------------
+ * Dépendances et Mocks :
+ * -------------------------------------------------------------------------------
+ * - `@WebMvcTest(QuestionController.class)` : Cette annotation charge uniquement les 
+ *   composants nécessaires pour tester le contrôleur `QuestionController`, excluant les autres 
+ *   composants de l'application tels que les services et les bases de données.
+ * - `@MockBean` : Utilisé pour simuler le service `IQuestionService`.
+ * - `MockMvc` : Outil de test Spring MVC permettant de simuler des requêtes HTTP et de 
+ *   vérifier les réponses.
+ * - `ObjectMapper` : Utilisé pour sérialiser des objets Java en JSON et vice versa.
+ *
+ * -------------------------------------------------------------------------------
+ * Méthodes Mockito utilisées :
+ * -------------------------------------------------------------------------------
+ * - `when(...).thenReturn(...)` : Cette méthode est utilisée pour spécifier ce que le mock 
+ *   `questionService` doit retourner lorsqu'une méthode spécifique est appelée.
+ * - `any(...)` : Permet de faire correspondre n'importe quel argument de type spécifié.
+ * - `Mockito.eq(...)` : Permet de spécifier un argument exact pour la méthode mockée.
+ *
+ * -------------------------------------------------------------------------------
+ * Assertions dans les tests :
+ * -------------------------------------------------------------------------------
+ * - `andExpect(status().isCreated())` : Vérifie que le statut HTTP est `201 Created`.
+ * - `andExpect(status().isOk())` : Vérifie que le statut HTTP est `200 OK`.
+ * - `andExpect(status().isNoContent())` : Vérifie que le statut HTTP est `204 No Content`.
+ * - `andExpect(jsonPath(...))` : Vérifie le contenu JSON de la réponse.
+ *
+ * -------------------------------------------------------------------------------
+ * Structure de la classe `Question` :
+ * -------------------------------------------------------------------------------
+ * - `id` : L'identifiant unique de la question (long).
+ * - `subject` : Le sujet de la question (String).
+ * - `title` : Le titre de la question (String).
+ * - `optionA`, `optionB`, `optionC`, `optionD` : Les options de réponse (String).
+ * - `rightAnswer` : La bonne réponse (String).
+ *
+ * -------------------------------------------------------------------------------
+ * Résumé des comportements testés :
+ * -------------------------------------------------------------------------------
+ * - Création de questions (`POST`).
+ * - Récupération de toutes les questions (`GET`).
+ * - Récupération d'une question spécifique par ID (`GET`).
+ * - Mise à jour d'une question (`PUT`).
+ * - Suppression d'une question (`DELETE`).
+ * - Récupération de tous les sujets disponibles (`GET`).
+ * - Récupération de questions mélangées pour un utilisateur (`GET`).
+ */
+
 package com.dailycodework.quizonline.controller;
 
 import com.dailycodework.quizonline.model.Question;
