@@ -8,7 +8,7 @@
 - [Equipe & rôles](#equipe--roles)
 - [Gestion de projet](#gestion-de-projet)
 - [Documentation](#documentation)
-- [Communication au sein de notre équipe](#communication-au-sein-de-notre-equipe)
+- [Communication au sein de notre équipe](#communication-au-sein-de-notre-équipe)
 - [Installation](#installation)
 
 
