@@ -51,10 +51,7 @@ L'application suivra une architecture **MVC (Modèle-Vue-Contrôleur)** pour ass
 - **Modèle (Model)** : Représente les données et la logique métier (gestion des quiz, des résultats, etc.).
 - **Vue (View)** : L'interface utilisateur développée en React.
 - **Contrôleur (Controller)** : La logique de contrôle qui gère les interactions entre le modèle et la vue.
-
-### 4.3 **Sécurité :**
-- **Authentification et autorisation :** Implémentation de la gestion des utilisateurs avec des niveaux d'accès différenciés (étudiants, enseignants, administrateurs).
-- **Protection contre les attaques :** Mise en place de mesures pour protéger contre les injections SQL, les attaques CSRF, etc.
+- 
 
 ## **5. Planning du projet**
 
@@ -77,9 +74,7 @@ Le projet sera réalisé en plusieurs phases :
 ## **6. Gestion du projet**
 
 - **Jira** : Suivi de l'avancement du projet et gestion des tâches.
-- **Slack** : Communication en équipe.
 - **GitHub** : Hébergement du code source et suivi des versions.
-
 
 
 ## **7. Suivi et évaluation**
