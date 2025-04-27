@@ -5,10 +5,10 @@
 ## Table des matières
 - [Nom du projet IQnite](#nom-du-projet-iqnite)
 - [Description](#description)
-- [Equipe & rôles](#equipe--roles)
+- [Equipe & rôles](#equipe-&-rôles)
 - [Gestion de projet](#gestion-de-projet)
 - [Documentation](#documentation)
-- [Communication au sein de notre équipe](#communication-au-sein-de-notre-equipe)
+- [Communication au sein de notre équipe](#communication-au-sein-de-notre-équipe)
 - [Installation](#installation)
 
 
