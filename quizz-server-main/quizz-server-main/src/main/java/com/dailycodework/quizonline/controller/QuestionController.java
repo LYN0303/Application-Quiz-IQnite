@@ -104,7 +104,7 @@ import java.util.Optional;
 import static org.springframework.http.HttpStatus.CREATED;
 
 /**
- * @author Simpson Alfred
+ * @author IQniteQuiz Groupe
  */
 
 @CrossOrigin("http://localhost:5173")
