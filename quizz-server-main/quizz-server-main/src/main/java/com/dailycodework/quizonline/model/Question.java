@@ -65,7 +65,7 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * @author Simpson Alfred
+ * @author IQniteQuiz Groupe
  */
 @Getter
 @Setter
