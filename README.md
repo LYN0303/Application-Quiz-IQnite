@@ -26,6 +26,8 @@ Notre équipe est composée de :
 1. **Si Lakehal Abdelmalek** - _Développeur full stack & Administrateur base de donnée_
 1. **Mezemate Islam Sofiane** - _Développeur Front-end_
 
+- Bien que les rôles aient été définis, nous avons souvent été amenés à nous épauler et à endosser ponctuellement les responsabilités des uns et des autres.
+
 ## Gestion de projet
 - Utilisation de Jira : [https://sislem404.atlassian.net/jira/software/projects/KAN/list](https://sislem404.atlassian.net/jira/software/projects/KAN/list)
 - Utilisation de la méthode agile Kanban [https://docs.kanboard.org/fr/]
