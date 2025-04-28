@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react"
-
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { createQuestion, getSubjects } from "../../../utils/QuizService.jsx"
 
@@ -7,10 +6,18 @@ const AddQuestion = () => {
 	const [question, setQuestionText] = useState("")
 	const [questionType, setQuestionType] = useState("single")
 	const [choices, setChoices] = useState([""])
-	const [correctAnswers, setCorrectAnswers] = useState([""])
+	const [correctAnswers, setCorrectAnswers] = useState([])
 	const [subject, setSubject] = useState("")
 	const [newSubject, setNewSubject] = useState("")
 	const [subjectOptions, setSubjectOptions] = useState([""])
+
+	const [errors, setErrors] = useState({
+		question: "",
+		choices: "",
+		subject: "",
+		newSubject: "",
+		correctAnswers: ""
+	})
 
 	useEffect(() => {
 		fetchSubjects()
@@ -36,35 +43,45 @@ const AddQuestion = () => {
 	const handleRemoveChoice = (index) => {
 		setChoices(choices.filter((choice, i) => i !== index))
 	}
+
 	const handleChoiceChange = (index, value) => {
 		setChoices(choices.map((choice, i) => (i === index ? value : choice)))
 	}
 
-	const handleCorrectAnswerChange = (index, value) => {
-		setCorrectAnswers(correctAnswers.map((answer, i) => (i === index ? value : answer)))
+	const handleCorrectAnswerChange = (event) => {
+		const value = event.target.value
+		if (correctAnswers.includes(value)) {
+			setCorrectAnswers(correctAnswers.filter(answer => answer !== value))
+		} else {
+			setCorrectAnswers([...correctAnswers, value])
+		}
 	}
 
-	const handleAddCorrectAnswer = () => {
-		setCorrectAnswers([...correctAnswers, ""])
-	}
+	const validateForm = () => {
+		const newErrors = {
+			question: question ? "" : "La question est requise.",
+			choices: choices.every(choice => choice.trim()) ? "" : "Les choix sont requis.",
+			subject: subject ? "" : "Le sujet est requis.",
+			newSubject: subject === "New" && !newSubject.trim() ? "Le nom de la nouvelle matière est requis." : "",
+			correctAnswers: correctAnswers.length === 0 ? "Veuillez sélectionner au moins une réponse correcte." : ""
+		}
 
-	const handleRemoveCorrectAnswer = (index) => {
-		setCorrectAnswers(correctAnswers.filter((answer, i) => i !== index))
+		setErrors(newErrors)
+		return !Object.values(newErrors).some((error) => error)
 	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
+
+		if (!validateForm()) return
+
 		try {
 			const result = {
 				question,
 				questionType,
 				choices,
-				correctAnswers: correctAnswers.map((answer) => {
-					const choiceLetter = answer.charAt(0).toUpperCase()
-					const choiceIndex = choiceLetter.charCodeAt(0) - 65
-					return choiceIndex >= 0 && choiceIndex < choices.length ? choiceLetter : null
-				}),
-				subject
+				correctAnswers,
+				subject: subject === "New" ? newSubject.trim() : subject
 			}
 
 			await createQuestion(result)
@@ -72,8 +89,10 @@ const AddQuestion = () => {
 			setQuestionText("")
 			setQuestionType("single")
 			setChoices([""])
-			setCorrectAnswers([""])
+			setCorrectAnswers([])
 			setSubject("")
+			setNewSubject("")
+			setErrors({})
 		} catch (error) {
 			console.error(error)
 		}
@@ -90,7 +109,7 @@ const AddQuestion = () => {
 	return (
 		<div className="container">
 			<div className="row justify-content-center">
-				<div className="col-md-6  mt-5">
+				<div className="col-md-6 mt-5">
 					<div className="card">
 						<div className="card-header">
 							<h5 className="card-title">Ajouter de nouvelles questions</h5>
@@ -106,14 +125,15 @@ const AddQuestion = () => {
 										value={subject}
 										onChange={(e) => setSubject(e.target.value)}
 										className="form-control">
-										<option value="">Sélectionner une matière</option>
-										<option value={"New"}>Ajouter une nouvelle</option>
+										<option value="">--Sélectionner une matière--</option>
+										<option value="New">Ajouter une nouvelle</option>
 										{subjectOptions.map((option) => (
 											<option key={option} value={option}>
 												{option}
 											</option>
 										))}
 									</select>
+									{errors.subject && <div className="text-danger">{errors.subject}</div>}
 								</div>
 
 								{subject === "New" && (
@@ -128,6 +148,7 @@ const AddQuestion = () => {
 											onChange={(event) => setNewSubject(event.target.value)}
 											className="form-control"
 										/>
+										{errors.newSubject && <div className="text-danger">{errors.newSubject}</div>}
 										<button
 											type="button"
 											onClick={handleAddSubject}
@@ -136,6 +157,7 @@ const AddQuestion = () => {
 										</button>
 									</div>
 								)}
+
 								<div className="mb-3">
 									<label htmlFor="question-text" className="form-label text-info">
 										Question
@@ -145,7 +167,9 @@ const AddQuestion = () => {
 										rows={4}
 										value={question}
 										onChange={(e) => setQuestionText(e.target.value)}></textarea>
+									{errors.question && <div className="text-danger">{errors.question}</div>}
 								</div>
+
 								<div className="mb-3">
 									<label htmlFor="question-type" className="form-label text-info">
 										Type de question
@@ -159,6 +183,7 @@ const AddQuestion = () => {
 										<option value="multiple">Réponse multiple</option>
 									</select>
 								</div>
+
 								<div className="mb-3">
 									<label htmlFor="choices" className="form-label text-primary">
 										Choix
@@ -185,54 +210,45 @@ const AddQuestion = () => {
 										className="btn btn-outline-primary">
 										Ajouter un choix
 									</button>
+									{errors.choices && <div className="text-danger">{errors.choices}</div>}
 								</div>
-								{questionType === "single" && (
-									<div className="mb-3">
-										<label htmlFor="answer" className="form-label text-success">
-											Réponse correcte
-										</label>
-										<input
-											type="text"
-											className="form-control"
-											id="answer"
-											value={correctAnswers[0]}
-											onChange={(e) => handleCorrectAnswerChange(0, e.target.value)}
-										/>
-									</div>
-								)}
-								{questionType === "multiple" && (
-									<div className="mb-3">
-										<label htmlFor="answer" className="form-label text-success">
-											Réponse(s) correcte(s)
-										</label>
-										{correctAnswers.map((answer, index) => (
-											<div key={index} className="d-flex mb-2">
-												<input
-													type="text"
-													className="form-control me-2"
-													value={answer}
-													onChange={(e) => handleCorrectAnswerChange(index, e.target.value)}
-												/>
-												{index > 0 && (
-													<button
-														type="button"
-														className="btn btn-danger"
-														onClick={() => handleRemoveCorrectAnswer(index)}>
-														Supprimer
-													</button>
-												)}
-											</div>
-										))}
-										<button
-											type="button"
-											className="btn btn-outline-info"
-											onClick={handleAddCorrectAnswer}>
-											Ajouter une réponse correcte
-										</button>
-									</div>
-								)}
 
-								{!correctAnswers.length && <p>Veuillez entrer au moins une réponse correcte.</p>}
+								<div className="mb-3">
+									<label htmlFor="answer" className="form-label text-success">
+										{questionType === "single" ? "Réponse correcte" : "Réponse(s) correcte(s)"}
+									</label>
+									{questionType === "single" ? (
+										<select
+											id="answer"
+											className="form-control"
+											value={correctAnswers[0] || ""}
+											onChange={(e) => setCorrectAnswers([e.target.value])}
+										>
+											<option value="">Sélectionner une réponse</option>
+											{choices.map((choice, index) => (
+												<option key={index} value={choice}>
+													{choice}
+												</option>
+											))}
+										</select>
+									) : (
+										<>
+											{choices.map((choice, index) => (
+												<div key={index} className="form-check">
+													<input
+														type="checkbox"
+														className="form-check-input"
+														value={choice}
+														onChange={handleCorrectAnswerChange}
+														checked={correctAnswers.includes(choice)}
+													/>
+													<label className="form-check-label">{choice}</label>
+												</div>
+											))}
+										</>
+									)}
+									{errors.correctAnswers && <div className="text-danger">{errors.correctAnswers}</div>}
+								</div>
 
 								<div className="btn-group">
 									<button type="submit" className="btn btn-outline-success mr-2">

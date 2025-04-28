@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { deleteQuestion, getAllQuestions } from "../../../utils/QuizService.jsx"
 import { Link } from "react-router-dom"
 import { FaPlus } from "react-icons/fa"

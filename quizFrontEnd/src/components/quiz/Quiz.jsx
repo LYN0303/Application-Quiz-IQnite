@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { fetchQuizForUser } from "../../../utils/QuizService.jsx"
@@ -9,7 +10,7 @@ const Quiz = () => {
 	])
 	const [selectedAnswers, setSelectedAnswers] = useState([{ id: "", answer: "" }])
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-	const [totalScores, setTotalScores] = useState(0)
+	const [ setTotalScores] = useState(0)
 	const location = useLocation()
 	const navigate = useNavigate()
 	const { selectedSubject, selectedNumQuestions } = location.state

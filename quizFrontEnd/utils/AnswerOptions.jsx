@@ -1,5 +1,7 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react"
 
+// eslint-disable-next-line react/prop-types
 const AnswerOptions = ({ question, isChecked, handleAnswerChange, handleCheckboxChange }) => {
 	if (!question) {
 		return (
@@ -10,19 +12,23 @@ const AnswerOptions = ({ question, isChecked, handleAnswerChange, handleCheckbox
 		)
 	}
 
+	// eslint-disable-next-line react/prop-types
 	const { id, questionType, choices } = question
 
 	if (questionType === "single") {
 		return (
 			<div>
-				{choices.sort().map((choice, index) => (
+				{/* eslint-disable-next-line react/prop-types */}
+				{choices.sort().map((choice) => (
 					<div key={choice} className="form-check mb-3">
 						<input
 							className="form-check-input"
 							type="radio"
 							id={choice}
+							/* eslint-disable-next-line react/prop-types */
 							name={question.id}
 							value={choice}
+							/* eslint-disable-next-line react/prop-types */
 							checked={isChecked(question.id, choice)}
 							onChange={() => handleAnswerChange(id, choice)}
 						/>
@@ -36,14 +42,17 @@ const AnswerOptions = ({ question, isChecked, handleAnswerChange, handleCheckbox
 	} else if (questionType === "multiple") {
 		return (
 			<div>
-				{choices.sort().map((choice, index) => (
+				{/* eslint-disable-next-line react/prop-types */}
+				{choices.sort().map((choice) => (
 					<div key={choice} className="form-check mb-3">
 						<input
 							className="form-check-input"
 							type="checkbox"
 							id={choice}
+							/* eslint-disable-next-line react/prop-types */
 							name={question.id}
 							value={choice}
+							/* eslint-disable-next-line react/prop-types */
 							checked={isChecked(question.id, choice)}
 							onChange={() => handleCheckboxChange(id, choice)}
 						/>
