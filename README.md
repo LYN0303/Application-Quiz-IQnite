@@ -24,7 +24,7 @@ Notre équipe est composée de :
 1. **Marie Laure Mukoko** - _Développeuse Back-end_
 1. **Delleci Yanis** - _Développeur Front-End_
 1. **Si Lakehal Abdelmalek** - _Administrateur base de donnée & Front-End_
-1. **Mazemate Islam Sofiane** - _Développeur Back-end_
+1. **Mezemate Islam Sofiane** - _Développeur Back-end_
 
 ## Gestion de projet
 - Utilisation de Jira : [https://sislem404.atlassian.net/jira/software/projects/KAN/list](https://sislem404.atlassian.net/jira/software/projects/KAN/list)
