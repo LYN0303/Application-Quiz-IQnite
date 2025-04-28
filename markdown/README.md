@@ -27,8 +27,8 @@ Notre équipe est composée de :
 1. **Mazemate Islam Sofiane** - _Développeur Back-end_
 
 ## Gestion de projet
-Utilisation de Jira : [https://sislem404.atlassian.net/jira/software/projects/KAN/list](https://sislem404.atlassian.net/jira/software/projects/KAN/list)
-Utilisation de la méthode Kanban [https://docs.kanboard.org/fr/]
+- Utilisation de Jira : [https://sislem404.atlassian.net/jira/software/projects/KAN/list](https://sislem404.atlassian.net/jira/software/projects/KAN/list)
+- Utilisation de la méthode Kanban [https://docs.kanboard.org/fr/]
 
 ## Documentation 
 Se trouve dans le dossier "markdown" de notre branche.
