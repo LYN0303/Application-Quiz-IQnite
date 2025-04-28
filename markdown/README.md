@@ -6,7 +6,7 @@
 - [Nom du projet IQnite](#nom-du-projet-iqnite)
 - [Description](#description)
 - [Equipe & rôles](#equipe--roles)
-- [Gestion de projet et méthodes](#gestion-de-projet-et-méthodes)
+- [Gestion de projet](#gestion-de-projet)
 - [Documentation](#documentation)
 - [Communication au sein de notre équipe](#communication-au-sein-de-notre-équipe)
 - [Installation](#installation)
