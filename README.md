@@ -23,8 +23,8 @@ Notre équipe est composée de :
 1. **Merniche Lynda** - _Lead développeur & Gestion de projet_
 1. **Marie Laure Mukoko** - _Développeuse Back-end_
 1. **Delleci Yanis** - _Développeur Front-End_
-1. **Si Lakehal Abdelmalek** - _Administrateur base de donnée & Front-End_
-1. **Mezemate Islam Sofiane** - _Développeur Back-end_
+1. **Si Lakehal Abdelmalek** - _Développeur full stack & Administrateur base de donnée_
+1. **Mezemate Islam Sofiane** - _Développeur Front-end_
 
 ## Gestion de projet
 - Utilisation de Jira : [https://sislem404.atlassian.net/jira/software/projects/KAN/list](https://sislem404.atlassian.net/jira/software/projects/KAN/list)
@@ -33,7 +33,7 @@ Notre équipe est composée de :
 ## Documentation 
 Se trouve dans le dossier "markdown" de notre branche.
 * Cahier des charges
-* User Story (Scénario du Quiz)
+* User Story
 * Installation et commandes 
 * Le rapport final du projet rédigé en PDF.
 
