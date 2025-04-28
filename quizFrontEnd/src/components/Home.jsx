@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react"
 import { Link } from "react-router-dom"
 import backgroundImage from "../assets/quizBackground.png"
@@ -10,15 +11,15 @@ const Home = () => {
 				backgroundSize: "cover",
 				backgroundPosition: "center",
 				backgroundRepeat: "no-repeat",
-				width: "100%",
 				minHeight: "100vh",
-				overflow: "hidden",
 				display: "flex",
 				flexDirection: "column",
 				alignItems: "center",
-				paddingTop: "10vh",
+				justifyContent: "center",
+				padding: "20px",
 				color: "#fff",
 				textShadow: "2px 2px 4px rgba(0,0,0,0.7)",
+				textAlign: "center",
 			}}>
 			<h2
 				style={{
@@ -26,35 +27,40 @@ const Home = () => {
 					fontWeight: "700",
 					color: "#fff",
 					textShadow: "2px 2px 8px rgba(0,0,0,0.7)",
-				}}
-				className="mb-4">
-				Bienvenue sur l'application de quiz IQnite
+					marginBottom: "2rem",
+					maxWidth: "800px",
+				}}>
+				Bienvenue sur notre application de quiz IQnite
 			</h2>
-			<div className="d-flex justify-content-center">
+			<div style={{ display: "flex", gap: "20px" }}>
 				<Link
 					to="/admin"
-					className="btn"
 					style={{
-						backgroundColor: "#4b0082",
+						backgroundColor: "#0b30ba",
 						color: "#fff",
 						borderRadius: "5px",
-						padding: "10px 20px",
+						padding: "12px 24px",
 						fontSize: "1.2rem",
-						margin: "0 10px",
-					}}>
+						textDecoration: "none",
+						transition: "transform 0.2s",
+					}}
+					onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+					onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
 					Espace Admin
 				</Link>
 				<Link
 					to="/quiz-stepper"
-					className="btn"
 					style={{
-						backgroundColor: "#4b0082",
+						backgroundColor: "#0b30ba",
 						color: "#fff",
 						borderRadius: "5px",
-						padding: "10px 20px",
+						padding: "12px 24px",
 						fontSize: "1.2rem",
-						margin: "0 10px",
-					}}>
+						textDecoration: "none",
+						transition: "transform 0.2s",
+					}}
+					onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+					onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
 					Passer un quiz
 				</Link>
 			</div>
