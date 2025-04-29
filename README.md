@@ -8,7 +8,7 @@
 - [Equipe & rôles](#equipe--roles)
 - [Gestion de projet](#gestion-de-projet)
 - [Documentation](#documentation)
-- [Communication au sein de notre équipe](#communication-au-sein-de-notre-equipe)
+- [Communication au sein de notre équipe](#communication-au-sein-de-notre-équipe)
 - [Installation](#installation)
 
 
@@ -24,18 +24,18 @@ Notre équipe est composée de :
 1. **Marie Laure Mukoko** - _Développeuse Back-end_
 1. **Delleci Yanis** - _Développeur Front-End_
 1. **Si Lakehal Abdelmalek** - _Développeur full stack & Administrateur base de donnée_
-1. **Mezemate Islam Sofiane** - _Développeur Front-end_
+1. **Mazemate Islam Sofiane** - _Développeur Front-end_
 
 - Bien que les rôles aient été définis, nous avons souvent été amenés à nous épauler et à endosser ponctuellement les responsabilités des uns et des autres.
 
 ## Gestion de projet
 - Utilisation de Jira : [https://sislem404.atlassian.net/jira/software/projects/KAN/list](https://sislem404.atlassian.net/jira/software/projects/KAN/list)
-- Utilisation de la méthode agile Kanban [https://docs.kanboard.org/fr/]
+- Utilisation de la méthode Kanban [https://docs.kanboard.org/fr/]
 
 ## Documentation 
 Se trouve dans le dossier "markdown" de notre branche.
 * Cahier des charges
-* User Story
+* User Story (Scénario du Quiz)
 * Installation et commandes 
 * Le rapport final du projet rédigé en PDF.
 
@@ -48,18 +48,25 @@ Clonez le dépôt :
 
 ```bash
 git clone https://github.com/LYN0303/Application-Quiz-IQnite/
+```
 Dans le répertoire du projet, vous pouvez exécuter
 
-#npm install
+``` bash
+#npm install 
+```
 installer les dépendances
 
+``` bash
 #npm start
+```
 Lance l'application en mode développement.
-Ouvrez http://localhost:5173/create-quiz GL2 pour la voir dans votre navigateur.
+Ouvrez http://localhost:5177/ pour la voir dans votre navigateur.
 La page se rechargera automatiquement lorsque vous apporterez des modifications.
 Vous verrez également les éventuelles erreurs de lint dans la console.
 
+``` bash
 #npm test
+```
 Lance le testeur en mode interactif de surveillance.
 Consultez la section sur l’exécution des tests pour plus d’informations [running tests](https://facebook.github.io/create-react-app/docs/running-tests)
 

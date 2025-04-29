@@ -48,18 +48,25 @@ Clonez le dépôt :
 
 ```bash
 git clone https://github.com/LYN0303/Application-Quiz-IQnite/
+```
 Dans le répertoire du projet, vous pouvez exécuter
 
-#npm install
+``` bash
+#npm install 
+```
 installer les dépendances
 
+``` bash
 #npm start
+```
 Lance l'application en mode développement.
-Ouvrez http://localhost:5173/create-quiz GL2 pour la voir dans votre navigateur.
+Ouvrez http://localhost:5177/ pour la voir dans votre navigateur.
 La page se rechargera automatiquement lorsque vous apporterez des modifications.
 Vous verrez également les éventuelles erreurs de lint dans la console.
 
+``` bash
 #npm test
+```
 Lance le testeur en mode interactif de surveillance.
 Consultez la section sur l’exécution des tests pour plus d’informations [running tests](https://facebook.github.io/create-react-app/docs/running-tests)
 
