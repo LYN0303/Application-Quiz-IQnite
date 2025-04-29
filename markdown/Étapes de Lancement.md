@@ -8,15 +8,15 @@
 
 ## 2. Démarrer ton BackEnd (Spring Boot)
 
-###Deux possibilités :
+### Deux possibilités :
 
-####Depuis IntelliJ IDEA :
+#### Depuis IntelliJ IDEA :
 
 - Clic droit sur QuizOnlineApplication.java
 
 - ➔ Run 'QuizOnlineApplication.main()'
 
-####Ou via le terminal :
+#### Ou via le terminal :
 
 bash
 CopierModifier
