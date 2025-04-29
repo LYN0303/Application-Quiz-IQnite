@@ -60,7 +60,7 @@ installer les dépendances
 #npm start
 ```
 Lance l'application en mode développement.
-Ouvrez http://localhost:5173/create-quiz GL2 pour la voir dans votre navigateur.
+Ouvrez http://localhost:5177/ pour la voir dans votre navigateur.
 La page se rechargera automatiquement lorsque vous apporterez des modifications.
 Vous verrez également les éventuelles erreurs de lint dans la console.
 
