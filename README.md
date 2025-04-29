@@ -21,9 +21,9 @@ Ce projet est une application de quiz en ligne permettant aux utilisateurs de pa
 ## Equipe & rôles
 Notre équipe est composée de :
 1. **Merniche Lynda** - _Lead développeur & Gestion de projet_
+1. **Si Lakehal Abdelmalek** - _Développeur full stack & Administrateur base de donnée_
 1. **Marie Laure Mukoko** - _Développeuse Back-end_
 1. **Delleci Yanis** - _Développeur Front-End_
-1. **Si Lakehal Abdelmalek** - _Développeur full stack & Administrateur base de donnée_
 1. **Mazemate Islam Sofiane** - _Développeur Front-end_
 
 - Bien que les rôles aient été définis, nous avons souvent été amenés à nous épauler et à endosser ponctuellement les responsabilités des uns et des autres.
