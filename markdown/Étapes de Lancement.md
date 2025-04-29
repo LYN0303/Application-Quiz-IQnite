@@ -18,21 +18,23 @@
 
 #### Ou via le terminal :
 
-bash
+``` bash
 CopierModifier
 cd quizBackEnd
 ./mvnw spring-boot:run    # (ou mvnw.cmd sous Windows)
+```
 Ton API Spring Boot sera lancée sur :
 👉 http://localhost:8080/
 
 ## 3. Démarrer ton FrontEnd (Vite.js)
 Dans un terminal, dans ton dossier quizFrontEnd :
 
-bash
+```bash
 CopierModifier
 cd quizFrontEnd
 npm install       # (à faire une seule fois si pas encore fait)
 npm run dev
+```
 Ton FrontEnd sera disponible sur :
 👉 http://localhost:5177/
 
