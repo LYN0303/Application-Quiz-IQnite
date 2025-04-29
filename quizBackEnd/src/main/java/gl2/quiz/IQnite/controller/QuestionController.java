@@ -106,7 +106,7 @@ import static org.springframework.http.HttpStatus.CREATED;
  * @author IQniteQuiz Groupe
  */
 
-@CrossOrigin("http://localhost:5176")
+@CrossOrigin("http://localhost:5177")
 @RestController
 @RequestMapping("/api/quizzes")
 @RequiredArgsConstructor

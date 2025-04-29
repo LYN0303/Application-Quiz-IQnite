@@ -1,8 +1,7 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
-import { fetchQuizForUser } from "../../../utils/QuizService.jsx"
-import AnswerOptions from "../../../utils/AnswerOptions.jsx"
+import { fetchQuizForUser } from "../../../utils/QuizService"
+import AnswerOptions from "../../../utils/AnswerOptions"
 
 const Quiz = () => {
 	const [quizQuestions, setQuizQuestions] = useState([
@@ -10,7 +9,8 @@ const Quiz = () => {
 	])
 	const [selectedAnswers, setSelectedAnswers] = useState([{ id: "", answer: "" }])
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-	const [ setTotalScores] = useState(0)
+	// eslint-disable-next-line no-unused-vars
+	const [totalScores, setTotalScores] = useState(0)
 	const location = useLocation()
 	const navigate = useNavigate()
 	const { selectedSubject, selectedNumQuestions } = location.state
@@ -85,6 +85,7 @@ const Quiz = () => {
 		})
 	}
 
+
 	const handleSubmit = () => {
 		let scores = 0;
 		quizQuestions.forEach((question) => {
@@ -108,6 +109,7 @@ const Quiz = () => {
 		navigate("/quiz-result", { state: { quizQuestions, totalScores: scores } });
 	};
 
+
 	const handleNextQuestion = () => {
 		if (currentQuestionIndex < quizQuestions.length - 1) {
 			setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
@@ -126,7 +128,7 @@ const Quiz = () => {
 	return (
 		<div className="p-5">
 			<h3 className="text-info">
-				Question {quizQuestions.length > 0 ? currentQuestionIndex + 1 : 0} sur {quizQuestions.length}
+				Question {quizQuestions.length > 0 ? currentQuestionIndex + 1 : 0} of {quizQuestions.length}
 			</h3>
 
 			<h4 className="mb-4">
@@ -145,7 +147,7 @@ const Quiz = () => {
 					className="btn btn-sm btn-primary me-2"
 					onClick={handlePreviousQuestion}
 					disabled={currentQuestionIndex === 0}>
-					Question précédente
+					Previous question
 				</button>
 				<button
 					className={`btn btn-sm btn-info ${
@@ -158,7 +160,7 @@ const Quiz = () => {
 								answer.id === quizQuestions[currentQuestionIndex]?.id || answer.answer.length > 0
 						)
 					}>
-					{currentQuestionIndex === quizQuestions.length - 1 ? "Soumettre le quiz" : "Question suivante"}
+					{currentQuestionIndex === quizQuestions.length - 1 ? "Submit quiz" : "Next question"}
 				</button>
 			</div>
 		</div>
