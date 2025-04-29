@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getSubjects } from "../../../utils/QuizService.jsx"
+import { getAllQuestions, getSubjects } from "../../../utils/QuizService.jsx"
 
 const QuizStepper = () => {
 	const [currentStep, setCurrentStep] = useState(1)
 	const [selectedSubject, setSelectedSubject] = useState("")
 	const [selectedNumQuestions, setSelectedNumQuestions] = useState("")
 	const [subjects, setSubjects] = useState([])
+	const [maxQuestions, setMaxQuestions] = useState(0)
+	const [errorMessage, setErrorMessage] = useState("")
 	const navigate = useNavigate()
 
 	useEffect(() => {
 		fetchSubjectData()
 	}, [])
+
+	useEffect(() => {
+		if (selectedSubject) {
+			checkAvailableQuestions(selectedSubject)
+		}
+	}, [selectedSubject])
 
 	const fetchSubjectData = async () => {
 		try {
@@ -22,28 +30,54 @@ const QuizStepper = () => {
 		}
 	}
 
+	const checkAvailableQuestions = async (subject) => {
+		try {
+			const allQuestions = await getAllQuestions()
+			const filtered = allQuestions.filter(q => q.subject === subject)
+			setMaxQuestions(filtered.length)
+		} catch (error) {
+			console.error("Erreur lors de la récupération des questions :", error)
+		}
+	}
+
 	const handleNext = () => {
+		const num = parseInt(selectedNumQuestions)
+
 		if (currentStep === 3) {
-			if (selectedSubject && selectedNumQuestions) {
-				navigate("/take-quiz", { state: { selectedNumQuestions, selectedSubject } })
-			} else {
+			if (!selectedSubject || !selectedNumQuestions) {
 				alert("Veuillez sélectionner un sujet et un nombre de questions.")
+				return
 			}
+			if (isNaN(num) || num <= 0) {
+				setErrorMessage("Le nombre de questions doit être supérieur à zéro.")
+				return
+			}
+			if (num > maxQuestions) {
+				setErrorMessage(`Il n'y a que ${maxQuestions} question(s) disponibles pour ce sujet.`)
+				return
+			}
+			setErrorMessage("")
+			navigate("/take-quiz", { state: { selectedNumQuestions, selectedSubject } })
 		} else {
+			setErrorMessage("")
 			setCurrentStep((prevStep) => prevStep + 1)
 		}
 	}
 
 	const handlePrevious = () => {
+		setErrorMessage("")
 		setCurrentStep((prevStep) => prevStep - 1)
 	}
 
 	const handleSubjectChange = (event) => {
 		setSelectedSubject(event.target.value)
+		setSelectedNumQuestions("")
+		setErrorMessage("")
 	}
 
 	const handleNumQuestionsChange = (event) => {
 		setSelectedNumQuestions(event.target.value)
+		setErrorMessage("")
 	}
 
 	const renderStepContent = () => {
@@ -74,8 +108,12 @@ const QuizStepper = () => {
 							className="form-control"
 							value={selectedNumQuestions}
 							onChange={handleNumQuestionsChange}
-							placeholder="Entrez le nombre de questions"
+							placeholder={`Max : ${maxQuestions}`}
+							min="1"
 						/>
+						{errorMessage && (
+							<p className="text-danger mt-2">{errorMessage}</p>
+						)}
 					</div>
 				)
 			case 3:
@@ -125,7 +163,11 @@ const QuizStepper = () => {
 								onClick={handleNext}
 								disabled={
 									(currentStep === 1 && !selectedSubject) ||
-									(currentStep === 2 && !selectedNumQuestions)
+									(currentStep === 2 &&
+										(!selectedNumQuestions ||
+											isNaN(selectedNumQuestions) ||
+											parseInt(selectedNumQuestions) <= 0 ||
+											parseInt(selectedNumQuestions) > maxQuestions))
 								}>
 								Suivant
 							</button>
